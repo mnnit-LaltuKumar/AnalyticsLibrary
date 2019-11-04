@@ -12,7 +12,10 @@ public class Analytics {
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId(appID) // Required for Analytics.
                 .build();
-        FirebaseApp.initializeApp(context , options, appName);
+        if(FirebaseApp.getApps(context).isEmpty()) {
+            android.util.Log.d("AnalyticsLib","AnalyticsLib Initialise= ");
+            FirebaseApp.initializeApp(context, options, appName);
+        }
 
         FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
         analytics.logEvent(FirebaseAnalytics.Event.APP_OPEN,null);

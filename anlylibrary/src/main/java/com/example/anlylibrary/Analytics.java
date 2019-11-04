@@ -7,6 +7,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 public class Analytics {
 
     public static void initialiseAnalytics(android.content.Context context,String appID,String appName){
+        android.util.Log.d("AnalyticsLib App ID= ",appID);
+        android.util.Log.d("AnalyticsLib App Name= ",appName);
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId(appID) // Required for Analytics.
                 .build();
@@ -14,6 +16,7 @@ public class Analytics {
 
         FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
         analytics.logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
+        analytics.logEvent(FirebaseAnalytics.Event.LOGIN,null);
     }
 
 }

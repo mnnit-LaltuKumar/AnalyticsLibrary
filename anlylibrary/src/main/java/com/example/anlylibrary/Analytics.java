@@ -17,10 +17,8 @@ public class Analytics {
                 .setApplicationId(appID) // Required for Analytics.
                 .build();
         Log.d("Firebase Apps= ",FirebaseApp.getApps(context).toString());
-        if(FirebaseApp.getApps(context).isEmpty()) {
-            Log.d("AnalyticsLib","AnalyticsLib Initialise= ");
-            FirebaseApp.initializeApp(context, options, appName);
-        }
+        Log.d("AnalyticsLib","AnalyticsLib Initialise= ");
+        FirebaseApp.initializeApp(context, options, appName);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
     }
 

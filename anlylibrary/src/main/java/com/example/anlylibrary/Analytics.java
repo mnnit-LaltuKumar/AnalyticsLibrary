@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import android.content.Context;
 import android.util.Log;
+import android.os.Bundle;
 
 public class Analytics {
 
@@ -16,18 +17,16 @@ public class Analytics {
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId(appID) // Required for Analytics.
                 .build();
-        Log.d("Firebase Apps= ",FirebaseApp.getApps(context).toString());
         Log.d("AnalyticsLib","AnalyticsLib Initialise= ");
         FirebaseApp.initializeApp(context, options, appName);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
     }
 
-    public static void logAppOpenEvent(){
+    public static void logAppOpenEvent(Bundle bundle){
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
     }
 
-    public static void logCustomAppEvent(android.os.Bundle bundle){
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN,bundle);
+    public static void logCustomAppEvent(String key,Bundle bundle){
+        mFirebaseAnalytics.logEvent(key,bundle);
     }
-
 }
